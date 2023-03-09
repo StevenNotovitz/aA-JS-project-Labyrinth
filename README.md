@@ -1,4 +1,5 @@
-# JS Project Proposal: First-Person Labyrinth Game
+### JS Project Proposal: First-Person Labyrinth Game
+# The Dark Depths
 
 
 ## Background
