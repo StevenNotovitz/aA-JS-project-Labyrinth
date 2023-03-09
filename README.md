@@ -11,17 +11,17 @@ The project will use JavaScript and HTML Canvas to draw the dungeon and handle u
 
 ## Functionality
 
-In this game, a use will be charged with navigating their way out of the labyrinth environment. The player will be able to:
--move from tile to traversable tile using the arrow keys,
--access a map screen that will be revealed as the player explores,
+In this game, a use will be charged with navigating their way out of the labyrinth environment. The player will be able to:\
+-move from tile to traversable tile using the arrow keys\
+-access a map screen that will be revealed as the player explores
 
 The game will render the view based on the world state, and will update the worldstate with each player move. The positions in the labyrinth will be organized as a node tree. At each position of the player, there are at most three possible moves, turn left, turn right, and step forward. The game will render the correct view based on the available moves at the user’s current position.
 
-Bonus features:
--create multiple levels
--randomly select one of several starting positions for the player
--bonus bonus feature: random generation of levels
--music and sounds, including monster sounds (see below)
+Bonus features:\
+-create multiple levels\
+-randomly select one of several starting positions for the player\
+-bonus bonus feature: random generation of levels\
+-music and sounds, including monster sounds (see below)\
 -monster wandering the maze - alternate lose condition (see below)
 
 
@@ -30,17 +30,17 @@ Bonus features:
 ![wireframe](wireframes\wireframe.png)
 ![map](wireframes\map.png)
 
--Nav links include links to this project’s Github repo, my LinkedIn, and portfolio website.
--Mute button, button to show/hide controls
--The user will be able to use the left, right, and up arrow keys, or the a, d, and w keys to turn and step forward, and the down arrow or s key to turn around; and either the space bar, enter, tab, or the m key to bring up the map.
+-Nav links include links to this project’s Github repo, my LinkedIn, and portfolio website.\
+-Mute button, button to show/hide controls\
+-The user will be able to use the left, right, and up arrow keys, or the a, d, and w keys to turn and step forward, and the down arrow or s key to turn around; and either the space bar, enter, tab, or the m key to bring up the map.\
 
 
 ## Technologies, Libraries, APIs
 
-This project will be implemented with the following technologies:
--The Canvas API to render the first-person view of the labyrinth
--Webpack and Babel to bundle and transpile the source Javascript code
--npm to manage project dependencies
+This project will be implemented with the following technologies:\
+-The [Canvas API](https://canvas.instructure.com/doc/api/) to render the first-person view of the labyrinth\
+-[Webpack](https://webpack.js.org/concepts/) and [Babel](https://babeljs.io/docs/) to bundle and transpile the source Javascript code\
+-[npm](https://docs.npmjs.com/) to manage project dependencies
 
 
 ## Implementation Timeline
@@ -58,6 +58,6 @@ This project will be implemented with the following technologies:
 
 ## Bonus Features
 
-There are many directions this dungeon escape game could eventually go. Some anticipated updates are:
--Add sounds and music
+There are many directions this dungeon escape game could eventually go. Some anticipated updates are:\
+-Add sounds and music\
 -Instead of a timer - let there be a monster wandering the labyrinth - play threatening sounds every once in a while, with volume proportional to how close the monster is
