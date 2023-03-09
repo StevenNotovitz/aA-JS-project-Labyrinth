@@ -1,13 +1,11 @@
 ### JS Project Proposal: First-Person Labyrinth Game
 # Project Name Pending
 
-
 ## Background
 
 The proposed project is a first-person perspective labyrinth puzzle game using HTML canvas to draw trapezoids representing walls, floor, and ceiling. The dungeon will be grid-based, and the player will navigate through it by moving from tile to adjacent traversable tile using the arrow keys. The fill style of the left and right trapezoids will dynamically toggle based on the world state - whether there is a wall or an opening. There will not actually be any 3D rendering of anything in this project.
 
 The project will use JavaScript and HTML Canvas to draw the dungeon and handle user input. The project will also use CSS for styling the interface. The win condition will be escaping the labyrinth to freedom. The most basic version of the game would probably just have a timer to allow players to lose the game if they don't complete the maze in time.
-
 
 ## Functionality
 
@@ -24,7 +22,6 @@ Bonus features:\
 -music and sounds, including monster sounds (see below)\
 -monster wandering the maze - alternate lose condition (see below)
 
-
 ## Wireframes
 
 ![wireframe](wireframes\wireframe.png)
@@ -34,14 +31,12 @@ Bonus features:\
 -Mute button, button to show/hide controls\
 -The user will be able to use the left, right, and up arrow keys, or the a, d, and w keys to turn and step forward, and the down arrow or s key to turn around; and either the space bar, enter, tab, or the m key to bring up the map.\
 
-
 ## Technologies, Libraries, APIs
 
 This project will be implemented with the following technologies:\
 -The [Canvas API](https://canvas.instructure.com/doc/api/) to render the first-person view of the labyrinth\
 -[Webpack](https://webpack.js.org/concepts/) and [Babel](https://babeljs.io/docs/) to bundle and transpile the source Javascript code\
 -[npm](https://docs.npmjs.com/) to manage project dependencies
-
 
 ## Implementation Timeline
 
@@ -54,7 +49,6 @@ This project will be implemented with the following technologies:\
 **Wednesday:** Implement user controls - movement and map toggling - and focus on styling and map generation. Add an indicator to help the user keep oriented during the state transitions - a ball that appears and moves to evoke continuity between states. If time, start on bonuses.
 
 **Thursday Morning:** Deploy to GitHub pages. If time, rewrite this proposal as a production README.
-
 
 ## Bonus Features
 
