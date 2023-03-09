@@ -31,7 +31,7 @@ const config = {
     ]
   },
   plugins: [new MiniCssExtractPlugin()]
-};
+}
 
 module.exports = (env, argv) => {
   if (argv.mode === 'production') {
