@@ -3,9 +3,9 @@ const ctx = canvas.getContext("2d")
 
 // fillRect()
 ctx.fillStyle = "red"
-let rect1 = ctx.fillRect(20, 20, 150, 100)
+ctx.fillRect(20, 20, 150, 100)
 ctx.fillStyle = "blue"
-let rect2 = ctx.fillRect(200, 20, 150, 100)
+ctx.fillRect(200, 20, 150, 100)
 
 // strokRect()
 ctx.lineWidth = 5
