@@ -4,6 +4,11 @@ document.addEventListener("DOMContentLoaded", () => {
     ctx.strokeStyle = "grey";
     ctx.fillStyle = "#3d3d3d";
 
+    leftStyle = "#3d3d3d";
+    farLeftStyle = "#3d3d3d";
+    farRightStyle = "#3d3d3d";
+    rightStyle = "#3d3d3d";
+
     let centerX = canvas.width / 2;
     let centerY = canvas.height / 2;
 
@@ -65,6 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ctx.lineTo(0, canvas.height);
     ctx.closePath();
     ctx.stroke();
+    ctx.fillStyle = leftStyle
     // ctx.fill();
 
     // #2 (up-left)
@@ -75,6 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ctx.lineTo(x2, y2 + h2);
     ctx.closePath();
     ctx.stroke();
+    ctx.fillStyle = farLeftStyle
     // ctx.fill();
     
     // #3 (up-2)
@@ -89,6 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ctx.lineTo(x1 + w1, y1 + h1);
     ctx.closePath();
     ctx.stroke();
+    ctx.fillStyle = farRightStyle
     ctx.fill();
 
     // #5 (right)
@@ -99,6 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ctx.lineTo(x2 + w2, y2 + h2);
     ctx.closePath();
     ctx.stroke();
+    ctx.fillStyle = rightStyle
     ctx.fill();
     
     // // #0 (up-1)
