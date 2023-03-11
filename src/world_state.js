@@ -10,14 +10,12 @@ export default class WorldState {
             [1, 0],     // S
             [0, -1]     // W
         ];
-
         this.left = this.left()
         this.farLeft = this.farLeft()
         this.far = this.maze[this.far()[0]][this.far()[1]]
         this.farRight = this.farRight()
         this.right = this.right()
         this.next = this.maze[this.next()[0]][this.next()[1]]
-
     }
 
     next() {

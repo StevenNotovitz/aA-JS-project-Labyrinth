@@ -20,6 +20,7 @@ export default class Player {
             this.pos[1] += this.dir[1];
         }
         console.log(this.pos);
+        
     }
 
     indexOf(dir) {
