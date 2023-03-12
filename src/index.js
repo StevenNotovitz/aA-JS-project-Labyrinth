@@ -22,5 +22,5 @@ document.addEventListener("DOMContentLoaded", () => {
         else if (e.key === "ArrowRight" || e.key === "Right") p.turnRight();
         w = new WorldState(p.pos, p.dir, maze);
         v = new View(window.w);
-    })
+    });
 });
