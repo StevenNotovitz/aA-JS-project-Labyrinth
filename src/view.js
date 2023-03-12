@@ -1,35 +1,43 @@
 export default class View {
 
-    constructor(game) {
-        this.game = game
+    constructor(worldState) {
+        this.draw(worldState)
     }
 
-    handleUpArrow(e) {
-        if (!this.game.isOver()) {
-            this.draw(worldstate)
-        }
-    }
-
-    draw(worldstate) {
+    draw(worldState) {
         let canvas = document.getElementById("canvas");
         let ctx = canvas.getContext("2d");
-        ctx.strokeStyle = "grey";
-        ctx.fillStyle = "#3d3d3d";
+        let T = 2 * Math.PI;
+        ctx.strokeStyle = "white";
+        ctx.fillStyle = "white";
 
-        
-        let leftStyle = "#3d3d3d";
-        let farLeftStyle = "#3d3d3d";
-        let farStyle = "#3d3d3d";
-        let farRightStyle = "#3d3d3d";
-        let rightStyle = "#3d3d3d";
-        let nextStyle = "transparent"
+        let leftStyle = "white";
+        let farLeftStyle = "white";
+        let farStyle = "white";
+        let farRightStyle = "white";
+        let rightStyle = "white";
+        let nextStyle = "white";
 
-        if (!worldstate.left) leftStyle = "black";
-        if (!worldstate.farLeft) farLeftStyle = "black";
-        if (!worldstate.far) farStyle = "black";
-        if (!worldstate.farRight) farRightStyle = "black";
-        if (!worldstate.right) farRightStyle = "black";
-        if (worldstate.next) nextStyle = "#3d3d3d";
+        if (!worldState.end) {
+            ctx.strokeStyle = "grey";
+            ctx.fillStyle = "#3d3d3d";
+            
+            leftStyle = "#3d3d3d";
+            farLeftStyle = "#3d3d3d";
+            farStyle = "#3d3d3d";
+            farRightStyle = "#3d3d3d";
+            rightStyle = "#3d3d3d";
+            nextStyle = "transparent";
+
+            if (!worldState.left) leftStyle = "black";
+            if (!worldState.farLeft) farLeftStyle = "black";
+            if (!worldState.far) farStyle = "black";
+            if (!worldState.farRight) farRightStyle = "black";
+            if (!worldState.right) rightStyle = "black";
+            if (worldState.next) nextStyle = "#3d3d3d";
+            if (worldState.next === 2) nextStyle = "white";
+            if (worldState.far === 2) farStyle = "white";
+        }
 
         let centerX = canvas.width / 2;
         let centerY = canvas.height / 2;
@@ -92,7 +100,7 @@ export default class View {
         ctx.lineTo(0, canvas.height);
         ctx.closePath();
         ctx.stroke();
-        ctx.fillStyle = leftStyle
+        ctx.fillStyle = leftStyle;
         ctx.fill();
 
         // #2 (up-left)
@@ -103,12 +111,12 @@ export default class View {
         ctx.lineTo(x2, y2 + h2);
         ctx.closePath();
         ctx.stroke();
-        ctx.fillStyle = farLeftStyle
+        ctx.fillStyle = farLeftStyle;
         ctx.fill();
 
         // #3 (up-2)
         ctx.strokeRect(x1, y1, w1, h1);
-        ctx.fillStyle = farStyle
+        ctx.fillStyle = farStyle;
         ctx.fillRect(x1, y1, w1, h1);
 
         // #4 (up-right)
@@ -119,7 +127,7 @@ export default class View {
         ctx.lineTo(x1 + w1, y1 + h1);
         ctx.closePath();
         ctx.stroke();
-        ctx.fillStyle = farRightStyle
+        ctx.fillStyle = farRightStyle;
         ctx.fill();
 
         // #5 (right)
@@ -130,12 +138,12 @@ export default class View {
         ctx.lineTo(x2 + w2, y2 + h2);
         ctx.closePath();
         ctx.stroke();
-        ctx.fillStyle = rightStyle
+        ctx.fillStyle = rightStyle;
         ctx.fill();
 
         // #0 (up-1)
         ctx.strokeRect(x2, y2, w2, h2);
-        ctx.fillStyle = nextStyle
+        ctx.fillStyle = nextStyle;
         ctx.fillRect(x2, y2, w2, h2);
     }
 

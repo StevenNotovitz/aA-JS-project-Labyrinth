@@ -19,8 +19,11 @@ export default class Player {
             this.pos[0] += this.dir[0];
             this.pos[1] += this.dir[1];
         }
+        else if (this.maze[this.pos[0] + this.dir[0]][this.pos[1] + this.dir[1]] === 2) {
+            this.pos[0] += this.dir[0];
+            this.pos[1] += this.dir[1];
+        }
         console.log(this.pos);
-        
     }
 
     indexOf(dir) {

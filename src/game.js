@@ -1,19 +1,19 @@
-export default class Game {
+// export default class Game {
 
-    gameloop() {
-        console.log("gameloop")
-        while(true) {
-            checkForInputFromPlayer();
-            render();
-        }
-    }
+//     gameloop() {
+//         console.log("gameloop")
+//         while(true) {
+//             checkForInputFromPlayer();
+//             render();
+//         }
+//     }
 
-    update() {
-        console.log("updating")
-    }
+//     update() {
+//         console.log("updating")
+//     }
 
-    render() {
-        console.log("rendering")
-    }
+//     render() {
+//         console.log("rendering")
+//     }
 
-}
+// }
