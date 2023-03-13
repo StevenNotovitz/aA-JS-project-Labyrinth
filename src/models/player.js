@@ -77,4 +77,8 @@ export default class Player {
         }
     }
 
+    posEquals(pos) {
+        return this.pos[0] === pos[0] && this.pos[1] === pos[1]
+    }
+
 }
