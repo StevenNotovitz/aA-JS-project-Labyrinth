@@ -17,7 +17,7 @@ export default class GameView {
         let rightStyle = "white";
         let nearStyle = "white";
 
-        if (!this.worldState.maze.at(this.worldState.pos)) {
+        if (!this.worldState.maze.level.at(this.worldState.pos)) {
             ctx.strokeStyle = "grey";
             ctx.fillStyle = "#3d3d3d";
             
@@ -144,6 +144,35 @@ export default class GameView {
         ctx.strokeRect(x2, y2, w2, h2);
         ctx.fillStyle = nearStyle;
         ctx.fillRect(x2, y2, w2, h2);
+        
+        this.drawCompass()
+    }
+
+    drawCompass() {        
+        let canvas = document.getElementById("canvas");
+        let ctx = canvas.getContext("2d");
+
+        ctx.strokeStyle = "black";
+        ctx.fillStyle = "grey";
+        let x = canvas.width / 2;
+        let y = canvas.height / 15;
+        let r = canvas.height / 20;
+        let T = 2 * Math.PI;
+        ctx.beginPath();
+        ctx.arc(x, y, r, 0, T);
+        ctx.stroke();
+        ctx.fill();
+        
+        ctx.font = "30px Arial";
+        ctx.fillStyle = "black";
+        let d = "";
+        let dir = this.worldState.player.dir;
+        let i = this.worldState.player.indexOf(dir);
+        if (i === 0) d = "N";
+        else if (i === 1) d = "E";
+        else if (i === 2) d = "S";
+        else if (i === 3) d = "W";
+        ctx.fillText(d, canvas.width / 2 - r/4, canvas.height / 12);
     }
 
 }

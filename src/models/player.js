@@ -12,7 +12,15 @@ export default class Player {
             [1, 0],     // S
             [0, -1]     // W
         ];
-        this.canMove = true
+        this.canMove = true;
+        
+        this.visited = {};
+        for (let i = 0; i < maze.iSize; i++) {
+            for (let j = 0; j < maze.jSize; j++) {
+                this.visited[[i, j].toString()] = false;
+            }
+        }
+        this.visited[pos.toString()] = true;        
     }
 
     //states -> empty, wall, exit
@@ -26,20 +34,21 @@ export default class Player {
         //     // do nothing
         // }
 
-        if (!this.maze.at(this.pos) && this.canMove) {
-            if (this.maze.level[this.pos[0] + this.dir[0]][this.pos[1] + this.dir[1]] === 0) {
+        if (!this.maze.level.at(this.pos) && this.canMove) {
+            if (this.maze.level.array[this.pos[0] + this.dir[0]][this.pos[1] + this.dir[1]] === 0) {
                 this.pos[0] += this.dir[0];
                 this.pos[1] += this.dir[1];
-            }
-            else if (this.maze.level[this.pos[0] + this.dir[0]][this.pos[1] + this.dir[1]] === 2) {
-                this.pos[0] += this.dir[0];
-                this.pos[1] += this.dir[1];
-            }
 
-            this.canMove = false;
-            setTimeout(() => {
-                this.canMove = true;
-            }, 750);
+                this.canMove = false;
+                setTimeout(() => {
+                    this.canMove = true;
+                }, 750);
+            }
+            else if (this.maze.level.array[this.pos[0] + this.dir[0]][this.pos[1] + this.dir[1]] === 2) {
+                this.pos[0] += this.dir[0];
+                this.pos[1] += this.dir[1];
+            }
+            this.visited[this.pos.toString()] = true;
         }
         console.log(this.pos);
     }
@@ -78,7 +87,27 @@ export default class Player {
     }
 
     posEquals(pos) {
-        return this.pos[0] === pos[0] && this.pos[1] === pos[1]
+        return this.pos[0] === pos[0] && this.pos[1] === pos[1];
+    }
+    
+    hasVisited(pos) {
+        return this.visited[pos.toString()];
+    }
+
+    traveledFar() {
+        let visited = []
+        for (let key in this.visited) {
+            let a = []
+            if (this.visited[key]) {
+                key.split(",").forEach(ele => a.push(parseInt(ele)))
+                visited.push(a)
+            }
+        }
+        for (let pos of visited) {
+            if (Math.abs(pos[0] - this.maze.startPos[0]) > 4) return true;
+            if (Math.abs(pos[1] - this.maze.startPos[1]) > 4) return true;
+        }
+        return false;
     }
 
 }

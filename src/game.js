@@ -2,6 +2,7 @@ import Maze from "./models/maze.js"
 import Player from "./models/player.js";
 import WorldState from "./models/worldstate.js";
 import GameView from "./views/gameview.js";
+import MapState from "./models/mapstate.js";
 import MapView from "./views/mapview.js";
 import EndView from "./views/endview.js";
 
@@ -12,7 +13,8 @@ export default class Game {
         this.player = new Player(this.maze.startPos, this.maze.startDir, this.maze);
         this.worldState = new WorldState(this.player);    // playerCamera
         this.view = new GameView(this.worldState);
-        this.map = new MapView(this.player);
+        this.mapState = new MapState(this.player);
+        this.map = new MapView(this.mapState);
         this.end = new EndView();
         this.mapOpen = false;
 
@@ -29,7 +31,7 @@ export default class Game {
                 else if (e.key === "ArrowRight" || e.key === "Right") this.player.turnRight();
         
                 this.view.draw();
-                if (this.maze.at(this.player.pos)) setTimeout(this.end.draw.bind(this), 4000);
+                if (this.maze.level.at(this.player.pos)) setTimeout(this.end.draw.bind(this), 4000);
             }
         });
 

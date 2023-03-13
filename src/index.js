@@ -1,14 +1,15 @@
 import Game from "./game.js";
+import Level from "./models/level.js"
 
 document.addEventListener("DOMContentLoaded", () => {
 
     document.getElementById("startGame-0").addEventListener("click", (e) => {
-        let game = new Game(level_0);
+        let game = new Game(new Level(level_0));
         game.view.draw();
     });
 
     document.getElementById("startGame-1").addEventListener("click", (e) => {
-        let game = new Game(level_1);
+        let game = new Game(new Level(level_1));
         game.view.draw();
     });
 

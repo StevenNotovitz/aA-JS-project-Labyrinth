@@ -1,12 +1,12 @@
 export default class MapView {
 
-    constructor(player) {
-        this.maze = player.maze;
-        this.player = player;
+    constructor(mapState) {
+        this.mapState = mapState;
+        this.maze = mapState.player.maze;
+        this.player = mapState.player;
     }
 
     draw() {
-        console.log("I'm the MAP")
         let canvas = document.getElementById("canvas");
         let ctx = canvas.getContext("2d");
         ctx.strokeStyle = "black";
@@ -43,27 +43,77 @@ export default class MapView {
         ctx.strokeRect(x4, y4, w4, h4);
 
         // tiles
-        let w5 = h4 / this.maze.jSize;
-        let h5 = h4 / this.maze.iSize;
-        for (let i = 0; i < this.maze.iSize; i++) {
-            for (let j = 0; j < this.maze.jSize; j++) {
-                let x5 = x4 + j * w5;
-                let y5 = y4 + i * h5;
-                ctx.strokeRect(x5, y5, w5, h5);
-                if (this.maze.at([i, j]) === 1) ctx.fillStyle = "#3d3d3d";
-                else if (this.player.posEquals([i, j])) ctx.fillStyle = "blue";
-                else ctx.fillStyle = "black";
-                ctx.fillRect(x5, y5, w5, h5);
+        if (this.player.traveledFar()) {
+            let w5 = h4 / this.maze.jSize;
+            let h5 = h4 / this.maze.iSize;
+            console.log("I'm the MAP!");
+            for (let i = 0; i < this.maze.iSize; i++) {
+                for (let j = 0; j < this.maze.jSize; j++) {
+                    let x5 = x4 + j * w5;
+                    let y5 = y4 + i * h5;
+                    ctx.strokeRect(x5, y5, w5, h5);
+                    ctx.fillStyle = "black";
+                    if (this.player.posEquals([i, j])) ctx.fillStyle = "blue";
+                    else if (this.mapState.exposed([i, j])) {
+                        if (this.maze.at([i, j]) === 1) ctx.fillStyle = "#3d3d3d";
+                        else if (this.player.hasVisited([i, j])) ctx.fillStyle = "orange";
+                        else if (this.maze.at([i, j]) === 0) ctx.fillStyle = "black";
+                        else if (this.maze.at([i, j]) === 2) ctx.fillStyle = "white";
+                    }
+                    ctx.fillRect(x5, y5, w5, h5);
+                }
+            }
+        } else {
+            console.log("I'm the small MAP!");
+            let mazeSize = Math.max(this.maze.iSize, this.maze.jSize);
+            let radius = Math.min(mazeSize, 7);
+            let w5 = h4 / radius;
+            let h5 = h4 / radius;
+            for (let i = 0; i < radius; i++) {
+                for (let j = 0; j < radius; j++) {
+                    let x5 = x4 + j * w5;
+                    let y5 = y4 + i * h5;
+                    ctx.strokeRect(x5, y5, w5, h5);
+                    ctx.fillStyle = "black";
+                    if (this.player.posEquals([i, j])) ctx.fillStyle = "blue";
+                    else if (this.mapState.exposed([i, j])) {
+                        if (this.maze.at([i, j]) === 1) ctx.fillStyle = "#3d3d3d";
+                        else if (this.player.hasVisited([i, j])) ctx.fillStyle = "orange";
+                        else if (this.maze.at([i, j]) === 0) ctx.fillStyle = "black";
+                        else if (this.maze.at([i, j]) === 2) ctx.fillStyle = "white";
+                    }
+                    ctx.fillRect(x5, y5, w5, h5);
+                }
             }
         }
-
-
-
-
+        this.drawCompass();
     }
 
-    secretDraw(maze) {
+    drawCompass() {        
+        let canvas = document.getElementById("canvas");
+        let ctx = canvas.getContext("2d");
+
+        ctx.strokeStyle = "black";
+        ctx.fillStyle = "grey";
+        let x = canvas.width / 2;
+        let y = canvas.height / 15;
+        let r = canvas.height / 20;
+        let T = 2 * Math.PI;
+        ctx.beginPath();
+        ctx.arc(x, y, r, 0, T);
+        ctx.stroke();
+        ctx.fill();
         
+        ctx.font = "30px Arial";
+        ctx.fillStyle = "black";
+        let d = "";
+        let dir = this.mapState.player.dir;
+        let i = this.mapState.player.indexOf(dir);
+        if (i === 0) d = "N";
+        else if (i === 1) d = "E";
+        else if (i === 2) d = "S";
+        else if (i === 3) d = "W";
+        ctx.fillText(d, canvas.width / 2 - r/3.5, canvas.height / 12);
     }
 
 }
