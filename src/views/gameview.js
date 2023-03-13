@@ -1,13 +1,12 @@
-export default class View {
+export default class GameView {
 
     constructor(worldState) {
-        this.draw(worldState)
+        this.worldState = worldState
     }
 
-    draw(worldState) {
+    draw() {
         let canvas = document.getElementById("canvas");
         let ctx = canvas.getContext("2d");
-        let T = 2 * Math.PI;
         ctx.strokeStyle = "white";
         ctx.fillStyle = "white";
 
@@ -16,9 +15,9 @@ export default class View {
         let farStyle = "white";
         let farRightStyle = "white";
         let rightStyle = "white";
-        let nextStyle = "white";
+        let nearStyle = "white";
 
-        if (!worldState.end) {
+        if (!this.worldState.maze.at(this.worldState.pos)) {
             ctx.strokeStyle = "grey";
             ctx.fillStyle = "#3d3d3d";
             
@@ -27,16 +26,16 @@ export default class View {
             farStyle = "#3d3d3d";
             farRightStyle = "#3d3d3d";
             rightStyle = "#3d3d3d";
-            nextStyle = "transparent";
+            nearStyle = "transparent";
 
-            if (!worldState.left) leftStyle = "black";
-            if (!worldState.farLeft) farLeftStyle = "black";
-            if (!worldState.far) farStyle = "black";
-            if (!worldState.farRight) farRightStyle = "black";
-            if (!worldState.right) rightStyle = "black";
-            if (worldState.next) nextStyle = "#3d3d3d";
-            if (worldState.next === 2) nextStyle = "white";
-            if (worldState.far === 2) farStyle = "white";
+            if (!this.worldState.left()) leftStyle = "black";
+            if (!this.worldState.farLeft()) farLeftStyle = "black";
+            if (!this.worldState.far()) farStyle = "black";
+            if (!this.worldState.farRight()) farRightStyle = "black";
+            if (!this.worldState.right()) rightStyle = "black";
+            if (this.worldState.near()) nearStyle = "#3d3d3d";
+            if (this.worldState.near() === 2) nearStyle = "white";
+            if (this.worldState.far() === 2) farStyle = "white";
         }
 
         let centerX = canvas.width / 2;
@@ -143,7 +142,7 @@ export default class View {
 
         // #0 (up-1)
         ctx.strokeRect(x2, y2, w2, h2);
-        ctx.fillStyle = nextStyle;
+        ctx.fillStyle = nearStyle;
         ctx.fillRect(x2, y2, w2, h2);
     }
 
