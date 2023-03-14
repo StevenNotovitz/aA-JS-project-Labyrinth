@@ -9,6 +9,7 @@ export default class MapView {
     draw() {
         let canvas = document.getElementById("canvas");
         let ctx = canvas.getContext("2d");
+
         ctx.strokeStyle = "black";
         ctx.fillStyle = "grey";
 

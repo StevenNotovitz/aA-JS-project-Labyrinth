@@ -172,7 +172,7 @@ export default class GameView {
         else if (i === 1) d = "E";
         else if (i === 2) d = "S";
         else if (i === 3) d = "W";
-        ctx.fillText(d, canvas.width / 2 - r/4, canvas.height / 12);
+        ctx.fillText(d, canvas.width / 2 - r/3.5, canvas.height / 12);
     }
 
 }
