@@ -1,12 +1,19 @@
 export default class EndView {
 
-    constructor() {
-
+    constructor(worldState) {
+        this.worldState = worldState
+    
     }
 
     draw() {
+        this.triggered = true;
+        console.log(this.triggered);
+
         let canvas = document.getElementById("canvas");
         let ctx = canvas.getContext("2d");
+
+        ctx.fillStyle = "white";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
 
         ctx.font = "30px Arial";
         ctx.fillStyle = "purple";

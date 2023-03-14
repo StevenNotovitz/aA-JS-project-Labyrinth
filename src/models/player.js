@@ -42,19 +42,19 @@ export default class Player {
                 this.canMove = false;
                 setTimeout(() => {
                     this.canMove = true;
-                }, 750);
+                }, 500);
             }
             else if (this.maze.level.array[this.pos[0] + this.dir[0]][this.pos[1] + this.dir[1]] === 2) {
                 this.pos[0] += this.dir[0];
                 this.pos[1] += this.dir[1];
             }
             this.visited[this.pos.toString()] = true;
+            console.log(this.pos);
         }
-        console.log(this.pos);
     }
 
     turnLeft() {
-        if (this.canMove) {
+        if (!this.maze.level.at(this.pos) && this.canMove) {
             let i = this.indexOf(this.dir);
             if (i - 1 < 0) i += this.dirs.length;
             this.dir = this.dirs[i - 1];
@@ -63,12 +63,12 @@ export default class Player {
             this.canMove = false;
             setTimeout(() => {
                 this.canMove = true;
-            }, 750);
+            }, 500);
         }
     }
 
     turnRight() {
-        if (this.canMove) {
+        if (!this.maze.level.at(this.pos) && this.canMove) {
             let i = this.indexOf(this.dir);
             this.dir = this.dirs[(i + 1) % this.dirs.length];
             console.log(this.dir);
@@ -76,7 +76,7 @@ export default class Player {
             this.canMove = false;
             setTimeout(() => {
                 this.canMove = true;
-            }, 750);
+            }, 500);
         }
     }
 

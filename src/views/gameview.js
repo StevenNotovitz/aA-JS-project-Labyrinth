@@ -145,7 +145,7 @@ export default class GameView {
         ctx.fillStyle = nearStyle;
         ctx.fillRect(x2, y2, w2, h2);
         
-        this.drawCompass()
+        if (!this.worldState.maze.level.at(this.worldState.pos)) this.drawCompass()
     }
 
     drawCompass() {        
