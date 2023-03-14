@@ -6,7 +6,7 @@
 }
 
 .wrapper {
-  width: 90vw;
+  width: 85vw;
   height: 95vh;
   margin: auto;
   display: flex;
@@ -16,6 +16,7 @@
 .nav {
   height: 100%;
   width: 200px;
+  min-width: 200px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -61,7 +62,7 @@
 }
 
 .misc {
-  width: 425px;
+  flex-grow: 1;
   height: 100%;
   display: flex;
   flex-direction: column;
