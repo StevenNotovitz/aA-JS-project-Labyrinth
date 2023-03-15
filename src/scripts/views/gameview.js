@@ -175,4 +175,10 @@ export default class GameView {
         ctx.fillText(d, canvas.width / 2 - r/3.5, canvas.height / 12);
     }
 
+    reset() {
+        let canvas = document.getElementById("canvas");
+        let ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+    }
+
 }

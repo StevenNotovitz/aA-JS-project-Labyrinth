@@ -49,7 +49,16 @@ export default class Game {
             }
         });
 
-        document.getElementById("mapButton").addEventListener("click", (e) => {
+        document.getElementById("resetGame").addEventListener("click", (e) => {
+            this.view.reset();
+            this.minimap.reset();
+            this.compass.reset();
+            this.game = undefined;
+        })
+
+        document.getElementById("map").classList.remove("hidden")
+
+        document.getElementById("map").addEventListener("click", (e) => {
             if (!this.mapOpen && (!this.maze.level.at(this.player.pos) || end)) {
                 this.mapOpen = true;
                 this.map.draw();
@@ -65,6 +74,17 @@ export default class Game {
                 if (!this.mapOpen && (!this.maze.level.at(this.player.pos) || end)) {
                     this.mapOpen = true;
                     this.map.draw();
+                } else if (this.mapOpen) {
+                    this.mapOpen = false;
+                    if (!this.maze.level.at(this.player.pos)) this.view.draw();
+                    else this.end.draw();
+                }
+            }
+
+            if (e.key === 'n') {
+                if (!this.mapOpen && (!this.maze.level.at(this.player.pos) || end)) {
+                    this.mapOpen = true;
+                    this.map.reveal();
                 } else if (this.mapOpen) {
                     this.mapOpen = false;
                     if (!this.maze.level.at(this.player.pos)) this.view.draw();

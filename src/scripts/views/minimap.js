@@ -36,25 +36,36 @@ export default class miniMap {
         // tiles
         console.log("I'm the mini MAP!");
         let mazeSize = Math.max(this.maze.iSize, this.maze.jSize);
-        let radius = Math.min(mazeSize, 7);
+        let radius = Math.min(mazeSize, 5);
         let w3 = h2 / radius;
         let h3 = h2 / radius;
+
+        let startI = this.player.pos[0] - Math.floor(radius / 2);
+        let startJ = this.player.pos[1] - Math.floor(radius / 2);
+
         for (let i = 0; i < radius; i++) {
             for (let j = 0; j < radius; j++) {
                 let x3 = x2 + j * w3;
                 let y3 = y2 + i * h3;
                 ctx.strokeRect(x3, y3, w3, h3);
                 ctx.fillStyle = "black";
-                if (this.player.posEquals([i, j])) ctx.fillStyle = "blue";
-                else if (this.mapState.exposed([i, j])) {
-                    if (this.maze.at([i, j]) === 1) ctx.fillStyle = "#3d3d3d";
-                    else if (this.player.hasVisited([i, j])) ctx.fillStyle = "orange";
-                    else if (this.maze.at([i, j]) === 0) ctx.fillStyle = "black";
-                    else if (this.maze.at([i, j]) === 2) ctx.fillStyle = "white";
+                if ((startI + i) < 0 || (startI + i) > mazeSize || (startJ + j) < 0 || (startJ + j) > mazeSize) ctx.fillStyle = "black";
+                else if (this.player.posEquals([startI + i, startJ + j])) ctx.fillStyle = "blue";
+                else if (this.mapState.exposed([startI + i, startJ + j])) {
+                    if (this.maze.at([startI + i, startJ + j]) === 1) ctx.fillStyle = "#3d3d3d";
+                    else if (this.player.hasVisited([startI + i, startJ + j])) ctx.fillStyle = "orange";
+                    else if (this.maze.at([startI + i, startJ + j]) === 0) ctx.fillStyle = "black";
+                    else if (this.maze.at([startI + i, startJ + j]) === 2) ctx.fillStyle = "white";
                 }
                 ctx.fillRect(x3, y3, w3, h3);
             }
         }
+    }
+
+    reset() {
+        let canvas = document.getElementById("minimap");
+        let ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
     }
 
 }

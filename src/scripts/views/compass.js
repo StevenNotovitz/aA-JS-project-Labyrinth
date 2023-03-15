@@ -9,9 +9,9 @@ export default class Compass {
     drawCompass() {        
         let canvas = document.getElementById("compass");
         let ctx = canvas.getContext("2d");
-
+        
         ctx.fillStyle = "#3d3d3d";
-        ctx.fillRect(0, 0, canvas.height, canvas.width)
+        ctx.fillRect(0, 0, canvas.height, canvas.width);
 
         ctx.strokeStyle = "black";
         ctx.fillStyle = "lightgrey";
@@ -33,7 +33,18 @@ export default class Compass {
         else if (i === 1) d = "E";
         else if (i === 2) d = "S";
         else if (i === 3) d = "W";
-        ctx.fillText(d, x*.75, y*1.33);
+        ctx.fillText(d, x*.7, y*1.3);
+
+        // ctx.beginPath();
+        // ctx.arc(x, y - r, r*1.5, T / 7.6, T / 2.75);
+        // ctx.strokeStyle = "red";
+        // ctx.stroke();
+    }
+
+    reset() {
+        let canvas = document.getElementById("compass");
+        let ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
     }
 
 }
