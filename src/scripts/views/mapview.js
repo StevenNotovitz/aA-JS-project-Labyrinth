@@ -36,6 +36,18 @@ export default class MapView {
         let x4 = centerX - w4 / 2;
         let y4 = centerY - h4 / 2;
 
+        // let grd = ctx.createGradient(0, 0, )
+        // var gradient = context.createLinearGradient(0, 300, 0, 0);
+        // gradient.addColorStop(0, "rgb(102, 76, 64)");
+        // gradient.addColorStop(0.9979838709677421, "rgb(0, 0, 0)");
+        // context.fillStyle = gradient;
+
+
+
+
+
+
+
         // map
         ctx.strokeRect(x3, y3, w3, h3);
         ctx.fillRect(x3, y3, w3, h3);
@@ -87,7 +99,7 @@ export default class MapView {
                 }
             }
         }
-        this.drawCompass();
+        // this.drawCompass();
     }
 
     drawCompass() {        
