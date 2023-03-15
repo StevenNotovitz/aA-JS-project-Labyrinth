@@ -17,7 +17,7 @@ export default class GameView {
         let rightStyle = "white";
         let nearStyle = "white";
 
-        if (!this.worldState.maze.level.at(this.worldState.pos)) {
+        if (!this.worldState.maze.at(this.worldState.pos)) {
             ctx.strokeStyle = "grey";
             ctx.fillStyle = "#3d3d3d";
             
@@ -36,6 +36,12 @@ export default class GameView {
             if (this.worldState.near()) nearStyle = "#3d3d3d";
             if (this.worldState.near() === 2) nearStyle = "white";
             if (this.worldState.far() === 2) farStyle = "white";
+            if (this.worldState.left() === 2) leftStyle = "white";
+            if (this.worldState.farLeft() === 2) farLeftStyle = "white";
+            if (this.worldState.far() === 2) farStyle = "white";
+            if (this.worldState.farRight() === 2) farRightStyle = "white";
+            if (this.worldState.right() === 2) rightStyle = "white";
+
         }
 
         let centerX = canvas.width / 2;
@@ -145,7 +151,7 @@ export default class GameView {
         ctx.fillStyle = nearStyle;
         ctx.fillRect(x2, y2, w2, h2);
         
-        // if (!this.worldState.maze.level.at(this.worldState.pos)) this.drawCompass()
+        // if (!this.worldState.maze.at(this.worldState.pos)) this.drawCompass()
     }
 
     drawCompass() {        

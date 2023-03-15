@@ -34,15 +34,12 @@ export default class miniMap {
         ctx.strokeRect(x2, y2, w2, h2);
 
         // tiles
-        console.log("I'm the mini MAP!");
         let mazeSize = Math.max(this.maze.iSize, this.maze.jSize);
         let radius = Math.min(mazeSize, 5);
         let w3 = h2 / radius;
         let h3 = h2 / radius;
-
         let startI = this.player.pos[0] - Math.floor(radius / 2);
         let startJ = this.player.pos[1] - Math.floor(radius / 2);
-
         for (let i = 0; i < radius; i++) {
             for (let j = 0; j < radius; j++) {
                 let x3 = x2 + j * w3;

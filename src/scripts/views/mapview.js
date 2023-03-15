@@ -42,12 +42,6 @@ export default class MapView {
         // gradient.addColorStop(0.9979838709677421, "rgb(0, 0, 0)");
         // context.fillStyle = gradient;
 
-
-
-
-
-
-
         // map
         ctx.strokeRect(x3, y3, w3, h3);
         ctx.fillRect(x3, y3, w3, h3);
@@ -59,7 +53,6 @@ export default class MapView {
         if (this.player.traveledFar()) {
             let w5 = h4 / this.maze.jSize;
             let h5 = h4 / this.maze.iSize;
-            console.log("I'm the MAP!");
             for (let i = 0; i < this.maze.iSize; i++) {
                 for (let j = 0; j < this.maze.jSize; j++) {
                     let x5 = x4 + j * w5;
@@ -77,7 +70,6 @@ export default class MapView {
                 }
             }
         } else {
-            console.log("I'm the small MAP!");
             let mazeSize = Math.max(this.maze.iSize, this.maze.jSize);
             let radius = Math.min(mazeSize, 7);
             let w5 = h4 / radius;
@@ -108,10 +100,12 @@ export default class MapView {
 
         ctx.strokeStyle = "black";
         ctx.fillStyle = "grey";
+
         let x = canvas.width / 2;
         let y = canvas.height / 15;
         let r = canvas.height / 20;
         let T = 2 * Math.PI;
+
         ctx.beginPath();
         ctx.arc(x, y, r, 0, T);
         ctx.stroke();

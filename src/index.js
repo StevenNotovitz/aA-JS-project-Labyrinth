@@ -1,5 +1,6 @@
 import Game from "./scripts/game.js";
-import Level from "./scripts/models/level.js"
+import * as l from "./scripts/models/levels.js";
+
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -8,76 +9,26 @@ document.addEventListener("DOMContentLoaded", () => {
     canvas.height = window.innerHeight / 1.25;
 
     document.getElementById("startGame-0").addEventListener("click", (e) => {
-        let game = new Game(new Level(level_0));
-        game.view.draw();
-    });
+        let game0 = new Game(l.level_0);
+        game0.view.draw();
+    })
 
     document.getElementById("startGame-1").addEventListener("click", (e) => {
-        let game = new Game(new Level(level_1));
-        game.view.draw();
+        let game1 = new Game(l.level_1);
+        game1.view.draw();
     });
 
     document.getElementById("startGame-2").addEventListener("click", (e) => {
-        let game = new Game(new Level(level_2));
-        game.view.draw();
-    })
+        let game2 = new Game(l.level_2);
+        game2.view.draw();
+    });
+
+    document.getElementById("startGame-3").addEventListener("click", (e) => {
+        let game3 = new Game(l.level_3);
+        game3.view.draw();
+    });
+
+    // document.getElementById("resetGame").addEventListener("click", (e) => {
+    // })
 
 });
-
-const level_00 = [
-    [1, 1, 1, 1, 1],
-    [1, 0, 0, 0, 1],
-    [1, 0, 1, 0, 1],
-    [1, 0, 1, 0, 1],
-    [1, 1, 1, 2, 1],
-];
-
-const level_0 = [
-    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    [1, 0, 0, 1, 1, 1, 1, 1, 1, 1],
-    [1, 1, 0, 0, 0, 1, 1, 1, 1, 1],
-    [1, 0, 0, 1, 0, 1, 1, 0, 0, 1],
-    [1, 0, 1, 1, 0, 1, 1, 0, 1, 1],
-    [1, 0, 0, 0, 0, 1, 0, 0, 0, 1],
-    [1, 0, 1, 1, 0, 1, 0, 1, 0, 1],
-    [1, 1, 1, 1, 0, 0, 0, 1, 0, 1],
-    [1, 1, 1, 1, 1, 1, 1, 1, 0, 2],
-    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-];
-
-const level_1 = [
-    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    [1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1],
-    [1, 1, 1, 0, 0, 0, 1, 0, 1, 1, 1, 1, 0, 1],
-    [1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1],
-    [1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1],
-    [1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 1],
-    [1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 1],
-    [1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 0, 1, 0, 1],
-    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1],
-    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1],
-    [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1],
-    [1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1],
-    [2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1],
-    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-];
-
-const level_2 = [
-    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1],
-    [1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
-    [1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1],
-    [1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1],
-    [1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1],
-    [1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1],
-    [1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1],
-    [1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 2],
-    [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1],
-    [1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
-    [1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
-    [1, 0, 1, 0, 1, 1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1],
-    [1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 1, 1, 0, 1, 0, 1],
-    [1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1],
-    [1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-];

@@ -28,7 +28,7 @@ export default class Compass {
         ctx.fillStyle = "black";
         let d = "";
         let dir = this.mapState.player.dir;
-        let i = this.mapState.player.indexOf(dir);
+        let i = this.player.indexOf(dir);
         if (i === 0) d = "N";
         else if (i === 1) d = "E";
         else if (i === 2) d = "S";
