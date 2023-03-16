@@ -25,7 +25,9 @@ export default class Game {
         this.compass = new Compass(this.mapState);
         this.minimap.draw();
         this.compass.drawCompass();
-        this.endview = document.getElementsByClassName("endview")[Math.floor(Math.random() * 4)]
+        this.endview = document.getElementsByClassName("endview")[Math.floor(Math.random() * 4)];
+        // this.endaudio = new Audio();
+        // this.endaudio.src = "../assets/audio/Claude-Debussy-Maid-with-the-Flaxen-Hair.mp3";
 
         document.addEventListener("keydown", (e) => {
             if (!over) {
@@ -65,7 +67,7 @@ export default class Game {
 
         document.addEventListener('keydown', (e) => {
             if (!over || free) {
-                if (e.key === 'm') {
+                if (e.key === "m") {
                     if (!this.mapOpen) {
                         this.mapOpen = true;
                         this.map.draw();
@@ -75,7 +77,7 @@ export default class Game {
                         else this.end.draw();
                     }
                 }
-                if (e.key === 'n') {
+                if (e.key === "n") {
                     if (!this.mapOpen) {
                         this.mapOpen = true;
                         this.map.reveal();
@@ -134,6 +136,8 @@ export default class Game {
         document.getElementById("endviewDiv").classList.remove("hidden");
         this.endview.classList.remove("hidden");
         this.endview.classList.add("fade-in-image");
+
+        // this.endaudio.play();
     }
 
     resetEnd() {
@@ -146,6 +150,8 @@ export default class Game {
         document.getElementById("endviewDiv").classList.add("hidden");
         this.endview.classList.add("hidden");
         this.endview.classList.remove("fade-in-image");
+
+        // this.endaudio.pause();
     }
 
 }

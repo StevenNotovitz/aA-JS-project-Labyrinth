@@ -81,7 +81,6 @@
               <button id="playbtn3" class="button audiobutton hidden"><p class="text">Play Music</p></button>
               <button id="mutebtn3" class="button audiobutton hidden"><p class="text">Mute Music</p></button>
               <script defer>
-
                 let audio = new Audio();
                 audio.src = "./assets/audio/1 - Robyn Miller - Myst Theme.mp3";
                 audio.loop = true;
@@ -132,24 +131,44 @@
                 let startbtns = document.getElementsByClassName("start");
                 for (let i = 0; i < startbtns.length; i++) {
                   startbtns[i].addEventListener("click", () => {
-                    playbtn.classList.add("hidden");
-                    mutebtn.classList.add("hidden");
-                    mutebtn2.classList.remove("hidden");
+                    gameaudio.currentTime = 0;
                     audio.pause();
                     gameaudio.play();
+                    endaudio.pause();
+                    playbtn.classList.add("hidden");
+                    mutebtn.classList.add("hidden");
+                    playbtn2.classList.add("hidden");
+                    mutebtn2.classList.remove("hidden");
+                    playbtn3.classList.add("hidden");
+                    mutebtn3.classList.add("hidden");
                   });
                 }
 
                 document.getElementById("resetGame").addEventListener("click", () => {
+                  audio.currentTime = 0;
+                  audio.play();
                   gameaudio.pause();
                   endaudio.pause();
-                  audio.play();
-                  playbtn3.classList.add("hidden");
-                  mutebtn3.classList.add("hidden");
-                  playbtn2.classList.add("hidden");
-                  mutebtn2.classList.add("hidden");
                   playbtn.classList.add("hidden")
                   mutebtn.classList.remove("hidden");
+                  playbtn2.classList.add("hidden");
+                  mutebtn2.classList.add("hidden");
+                  playbtn3.classList.add("hidden");
+                  mutebtn3.classList.add("hidden");
+                });
+
+                document.addEventListener("keydown", (e) => {
+                  if (e.key === "e") {
+                    audio.pause();
+                    gameaudio.pause();
+                    endaudio.play();
+                    playbtn.classList.add("hidden")
+                    mutebtn.classList.add("hidden");
+                    playbtn2.classList.add("hidden");
+                    mutebtn2.classList.add("hidden");
+                    playbtn3.classList.add("hidden");
+                    mutebtn3.classList.remove("hidden");
+                  }
                 });
               </script>
             </div>
