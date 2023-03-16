@@ -1,3 +1,7 @@
+edit google sheets criteria retroactively
+
+production readme
+
 
 fix mapButtonDiv having hover and active styles before game starts
 
