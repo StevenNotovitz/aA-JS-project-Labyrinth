@@ -77,16 +77,16 @@ export default class Game {
                         else this.end.draw();
                     }
                 }
-                if (e.key === "n") {
-                    if (!this.mapOpen) {
-                        this.mapOpen = true;
-                        this.map.reveal();
-                    } else if (this.mapOpen) {
-                        this.mapOpen = false;
-                        if (!over) this.view.draw();
-                        else this.end.draw();
-                    }
-                }
+                // if (e.key === "n") {
+                //     if (!this.mapOpen) {
+                //         this.mapOpen = true;
+                //         this.map.reveal();
+                //     } else if (this.mapOpen) {
+                //         this.mapOpen = false;
+                //         if (!over) this.view.draw();
+                //         else this.end.draw();
+                //     }
+                // }
             }
         });
 
