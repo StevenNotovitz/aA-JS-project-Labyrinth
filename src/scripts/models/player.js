@@ -3,8 +3,8 @@ export default class Player {
     constructor(pos, dir, maze) {
         this.pos = pos;
         this.dir = dir;
-        console.log(this.pos);
-        console.log(this.dir);
+        // console.log(this.pos);
+        // console.log(this.dir);
         this.maze = maze;
         this.dirs = [
             [-1, 0],    // N
@@ -49,7 +49,7 @@ export default class Player {
                 this.pos[1] += this.dir[1];
             }
             this.visited[this.pos.toString()] = true;
-            console.log(this.pos);
+            // console.log(this.pos);
         }
     }
 
@@ -58,7 +58,7 @@ export default class Player {
             let i = this.indexOf(this.dir);
             if (i - 1 < 0) i += this.dirs.length;
             this.dir = this.dirs[i - 1];
-            console.log(this.dir);
+            // console.log(this.dir);
 
             this.canMove = false;
             setTimeout(() => {
@@ -71,7 +71,7 @@ export default class Player {
         if (!this.maze.at(this.pos) && this.canMove) {
             let i = this.indexOf(this.dir);
             this.dir = this.dirs[(i + 1) % this.dirs.length];
-            console.log(this.dir);
+            // console.log(this.dir);
 
             this.canMove = false;
             setTimeout(() => {
