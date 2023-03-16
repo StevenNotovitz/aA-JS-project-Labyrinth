@@ -137,6 +137,8 @@ export default class Game {
         this.endview.classList.remove("hidden");
         this.endview.classList.add("fade-in-image");
 
+        this.endaudioplay();
+
         // this.endaudio.play();
     }
 
@@ -152,6 +154,25 @@ export default class Game {
         this.endview.classList.remove("fade-in-image");
 
         // this.endaudio.pause();
+    }
+
+    endaudioplay() {
+        document.getElementById("audio").pause();
+        document.getElementById("gameaudio").pause();
+        document.getElementById("endaudio").currentTime = 0;
+        document.getElementById("endaudio").play();
+        let playbtn = document.getElementById("playbtn");
+        let mutebtn = document.getElementById("mutebtn");
+        let playbtn2 = document.getElementById("playbtn2");
+        let mutebtn2 = document.getElementById("mutebtn2");
+        let playbtn3 = document.getElementById("playbtn3");
+        let mutebtn3 = document.getElementById("mutebtn3");
+        playbtn.classList.add("hidden")
+        mutebtn.classList.add("hidden");
+        playbtn2.classList.add("hidden");
+        mutebtn2.classList.add("hidden");
+        playbtn3.classList.add("hidden");
+        mutebtn3.classList.remove("hidden");
     }
 
 }

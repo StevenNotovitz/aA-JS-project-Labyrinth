@@ -80,16 +80,27 @@
               <button id="mutebtn2" class="button audiobutton hidden"><p class="text">Mute Music</p></button>
               <button id="playbtn3" class="button audiobutton hidden"><p class="text">Play Music</p></button>
               <button id="mutebtn3" class="button audiobutton hidden"><p class="text">Mute Music</p></button>
+              
+              <audio id="audio" src="./assets/audio/1 - Robyn Miller - Myst Theme.mp3" loop="true"></audio>
+              <audio id="gameaudio" src="./assets/audio/Volume-Beta-03.-Dead-Voxel.mp3" loop="true"></audio>
+              <audio id="endaudio" src="./assets/audio/Claude-Debussy-Maid-with-the-Flaxen-Hair.mp3"></audio>
+
               <script defer>
-                let audio = new Audio();
-                audio.src = "./assets/audio/1 - Robyn Miller - Myst Theme.mp3";
-                audio.loop = true;
-                let gameaudio = new Audio();
-                gameaudio.src = "./assets/audio/Volume-Beta-03.-Dead-Voxel.mp3";
-                gameaudio.loop = true;
-                let endaudio = new Audio();
-                endaudio.src = "./assets/audio/Claude-Debussy-Maid-with-the-Flaxen-Hair.mp3";
+                // let audio = new Audio();
+                // audio.id = "audio";
+                // audio.src = "./assets/audio/1 - Robyn Miller - Myst Theme.mp3";
+                // audio.loop = true;
+                // let gameaudio = new Audio();
+                // gameaudio.id = "gameaudio";
+                // gameaudio.src = "./assets/audio/Volume-Beta-03.-Dead-Voxel.mp3";
+                // gameaudio.loop = true;
+                // let endaudio = new Audio();
+                // endaudio.id = "endaudio";
+                // endaudio.src = "./assets/audio/Claude-Debussy-Maid-with-the-Flaxen-Hair.mp3";
                 // set object references
+                let audio = document.getElementById("audio");
+                let gameaudio = document.getElementById("gameaudio");
+                let endaudio = document.getElementById("endaudio");
                 let playbtn = document.getElementById("playbtn");
                 let mutebtn = document.getElementById("mutebtn");
                 let playbtn2 = document.getElementById("playbtn2");

@@ -46,7 +46,7 @@ export default class GameView {
         grd3.addColorStop(1, "black");
 
         if (!this.worldState.maze.at(this.worldState.pos)) {
-            ctx.strokeStyle = "grey";
+            ctx.strokeStyle = "dimgrey";
             ctx.fillStyle = "#3d3d3d";
             // ctx.fillStyle = grd;
 
