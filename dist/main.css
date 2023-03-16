@@ -152,7 +152,8 @@
 
 .icon {
   font-size: 30px;
-  color: lightskyblue;
+  color: skyblue;
+  text-shadow: 0 0 5px rgb(0, 0, 0);
   cursor: pointer;
 }
 
@@ -161,6 +162,7 @@
   font-family: "Vecna", sans-serif;
   font-weight: bold;
   color: goldenrod;
+  text-shadow: 0 0 5px rgb(0, 0, 0);
 }
 
 .levelSelect {
@@ -178,7 +180,7 @@
   width: 33%;
   margin: 5%;
   border: 1px solid black;
-  background-color: grey;
+  background-color: dimgrey;
   border-radius: 15%;
   box-shadow: 2px 2px rgb(0, 0, 0);
   cursor: pointer;
@@ -273,7 +275,7 @@
   width: 60px;
   height: 60px;
   border: 1px solid black;
-  background-color: grey;
+  background-color: dimgrey;
   border-radius: 15%;
   box-shadow: 2px 2px rgb(0, 0, 0);
   cursor: pointer;

@@ -131,8 +131,8 @@
                 let startbtns = document.getElementsByClassName("start");
                 for (let i = 0; i < startbtns.length; i++) {
                   startbtns[i].addEventListener("click", () => {
-                    gameaudio.currentTime = 0;
                     audio.pause();
+                    gameaudio.currentTime = 0;
                     gameaudio.play();
                     endaudio.pause();
                     playbtn.classList.add("hidden");
@@ -161,6 +161,7 @@
                   if (e.key === "e") {
                     audio.pause();
                     gameaudio.pause();
+                    endaudio.currentTime = 0;
                     endaudio.play();
                     playbtn.classList.add("hidden")
                     mutebtn.classList.add("hidden");
