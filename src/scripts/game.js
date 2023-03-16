@@ -98,9 +98,9 @@ export default class Game {
             free = false;
         });
 
-        document.getElementById("startGame-0").addEventListener("click", (e) => {
-            this.resetEnd()
-        })
+        // document.getElementById("startGame-0").addEventListener("click", (e) => {
+        //     this.resetEnd()
+        // })
     
         document.getElementById("startGame-1").addEventListener("click", (e) => {
             this.resetEnd()

@@ -7,42 +7,6 @@ export default class GameView {
     draw() {
         let canvas = document.getElementById("canvas");
         let ctx = canvas.getContext("2d");
-        ctx.strokeStyle = "white";
-        ctx.fillStyle = "white";
-
-        let leftStyle = "white";
-        let farLeftStyle = "white";
-        let farStyle = "white";
-        let farRightStyle = "white";
-        let rightStyle = "white";
-        let nearStyle = "white";
-
-        if (!this.worldState.maze.at(this.worldState.pos)) {
-            ctx.strokeStyle = "grey";
-            ctx.fillStyle = "#3d3d3d";
-            
-            leftStyle = "#3d3d3d";
-            farLeftStyle = "#3d3d3d";
-            farStyle = "#3d3d3d";
-            farRightStyle = "#3d3d3d";
-            rightStyle = "#3d3d3d";
-            nearStyle = "transparent";
-
-            if (!this.worldState.left()) leftStyle = "black";
-            if (!this.worldState.farLeft()) farLeftStyle = "black";
-            if (!this.worldState.far()) farStyle = "black";
-            if (!this.worldState.farRight()) farRightStyle = "black";
-            if (!this.worldState.right()) rightStyle = "black";
-            if (this.worldState.near()) nearStyle = "#3d3d3d";
-            if (this.worldState.near() === 2) nearStyle = "white";
-            if (this.worldState.far() === 2) farStyle = "white";
-            if (this.worldState.left() === 2) leftStyle = "white";
-            if (this.worldState.farLeft() === 2) farLeftStyle = "white";
-            if (this.worldState.far() === 2) farStyle = "white";
-            if (this.worldState.farRight() === 2) farRightStyle = "white";
-            if (this.worldState.right() === 2) rightStyle = "white";
-
-        }
 
         let centerX = canvas.width / 2;
         let centerY = canvas.height / 2;
@@ -57,6 +21,81 @@ export default class GameView {
         let x2 = centerX - w2 / 2;
         let y2 = centerY - h2 / 2;
 
+        ctx.strokeStyle = "white";
+        ctx.fillStyle = "white";
+        
+        let ceilStyle = "white";
+        let floorStyle = "white";
+        let leftStyle = "white";
+        let farLeftStyle = "white";
+        let farStyle = "white";
+        let farRightStyle = "white";
+        let rightStyle = "white";
+        let nearStyle = "white";
+
+        var grd = ctx.createRadialGradient(centerX, centerY, centerY / 4, centerX, centerY, centerY * 4);
+        grd.addColorStop(0, "black");
+        grd.addColorStop(1, "grey");
+
+        var grd2 = ctx.createRadialGradient(centerX, centerY, centerY / 20, centerX, centerY, centerY * 3)
+        grd2.addColorStop(0, "#3d3d3d");
+        grd2.addColorStop(0.5, "black");
+
+        var grd3 = ctx.createRadialGradient(centerX, centerY, centerY / 20, centerX, centerY, centerY / 1.33)
+        grd3.addColorStop(0, "#3d3d3d");
+        grd3.addColorStop(1, "black");
+
+        if (!this.worldState.maze.at(this.worldState.pos)) {
+            ctx.strokeStyle = "grey";
+            ctx.fillStyle = "#3d3d3d";
+            // ctx.fillStyle = grd;
+
+            let ceilGradient = ctx.createLinearGradient(0, 0, 0, centerY);
+            ceilGradient.addColorStop(0, "#3d3d3d");
+            ceilGradient.addColorStop(0.75, "black");
+
+            let floorGradient = ctx.createLinearGradient(0, centerY, 0, centerY * 2);
+            floorGradient.addColorStop(1, "#3d3d3d");
+            floorGradient.addColorStop(0.25, "black");
+
+            let leftGradient = ctx.createLinearGradient(0, 0, centerX, 0);
+            leftGradient.addColorStop(0, "#3d3d3d");
+            leftGradient.addColorStop(0.75, "black");
+
+            let rightGradient = ctx.createLinearGradient(centerX, 0, centerX * 2, 0);
+            rightGradient.addColorStop(1, "#3d3d3d");
+            rightGradient.addColorStop(0.25, "black");
+
+            ceilStyle = ceilGradient;
+            floorStyle = floorGradient;
+            leftStyle = "#3d3d3d";
+            leftStyle = leftGradient;
+            farLeftStyle = "#3d3d3d";
+            farLeftStyle = leftGradient;
+            farStyle = "#3d3d3d";
+            farStyle = grd3;
+            // farRightStyle = "#3d3d3d";
+            farRightStyle = rightGradient;
+            // rightStyle = "#3d3d3d";
+            rightStyle = rightGradient;
+            nearStyle = "transparent";
+
+            if (!this.worldState.left()) leftStyle = "black";
+            if (!this.worldState.farLeft()) farLeftStyle = "black";
+            if (!this.worldState.far()) farStyle = "black";
+            if (!this.worldState.farRight()) farRightStyle = "black";
+            if (!this.worldState.right()) rightStyle = "black";
+            if (this.worldState.near()) nearStyle = "#3d3d3d";
+            if (this.worldState.near()) nearStyle = grd2;
+            if (this.worldState.near() === 2) nearStyle = "white";
+            if (this.worldState.far() === 2) farStyle = "white";
+            if (this.worldState.left() === 2) leftStyle = "white";
+            if (this.worldState.farLeft() === 2) farLeftStyle = "white";
+            if (this.worldState.far() === 2) farStyle = "white";
+            if (this.worldState.farRight() === 2) farRightStyle = "white";
+            if (this.worldState.right() === 2) rightStyle = "white";
+        }
+
         // ceil 1
         ctx.beginPath();
         ctx.moveTo(0, 0);
@@ -65,6 +104,7 @@ export default class GameView {
         ctx.lineTo(x2, y2);
         ctx.closePath();
         ctx.stroke();
+        ctx.fillStyle = ceilStyle;
         ctx.fill();
 
         // ceil 2
@@ -75,7 +115,8 @@ export default class GameView {
         ctx.lineTo(x1, y1);
         ctx.closePath();
         ctx.stroke();
-        ctx.fill();    
+        ctx.fillStyle = ceilStyle;
+        ctx.fill();
 
         // floor 1
         ctx.beginPath();
@@ -85,6 +126,7 @@ export default class GameView {
         ctx.lineTo(canvas.width, canvas.height);
         ctx.closePath();
         ctx.stroke();
+        ctx.fillStyle = floorStyle;
         ctx.fill();
 
         // floor 2
@@ -95,6 +137,7 @@ export default class GameView {
         ctx.lineTo(x2 + w2, y2 + h2);
         ctx.closePath();
         ctx.stroke();
+        ctx.fillStyle = floorStyle;
         ctx.fill();
 
         // #1 (left)
