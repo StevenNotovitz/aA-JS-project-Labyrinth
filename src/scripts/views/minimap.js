@@ -44,15 +44,20 @@ export default class miniMap {
             for (let j = 0; j < radius; j++) {
                 let x3 = x2 + j * w3;
                 let y3 = y2 + i * h3;
+
+                let grd1 = ctx.createRadialGradient(x3 + h3 / 2, y3 + h3 / 2, h3 / 16, x3 + h3 / 2, y3 + h3 / 2, h3 / 5);
+                grd1.addColorStop(0, "rgba(128, 0, 128, .95");
+                grd1.addColorStop(1, "rgba(0, 0, 0, .95");
+
                 ctx.strokeRect(x3, y3, w3, h3);
                 ctx.fillStyle = "black";
                 if ((startI + i) < 0 || (startI + i) > mazeSize || (startJ + j) < 0 || (startJ + j) > mazeSize) ctx.fillStyle = "black";
-                else if (this.player.posEquals([startI + i, startJ + j])) ctx.fillStyle = "blue";
+                if (this.player.posEquals([startI + i, startJ + j]) && !this.maze.at([startI + i, startJ + j])) ctx.fillStyle = grd1;
                 else if (this.mapState.exposed([startI + i, startJ + j])) {
                     if (this.maze.at([startI + i, startJ + j]) === 1) ctx.fillStyle = "#3d3d3d";
-                    else if (this.player.hasVisited([startI + i, startJ + j])) ctx.fillStyle = "orange";
-                    else if (this.maze.at([startI + i, startJ + j]) === 0) ctx.fillStyle = "black";
-                    else if (this.maze.at([startI + i, startJ + j]) === 2) ctx.fillStyle = "white";
+                    if (this.maze.at([startI + i, startJ + j]) === 0) ctx.fillStyle = "rgba(0, 0, 0, .95";
+                    if (this.player.hasVisited([startI + i, startJ + j])) ctx.fillStyle = "rgba(0, 0, 0, .95";
+                    if (this.maze.at([startI + i, startJ + j]) === 2) ctx.fillStyle = "white";
                 }
                 ctx.fillRect(x3, y3, w3, h3);
             }

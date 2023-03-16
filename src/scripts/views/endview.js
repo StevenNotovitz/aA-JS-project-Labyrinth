@@ -6,9 +6,6 @@ export default class EndView {
     }
 
     draw() {
-        this.triggered = true;
-        console.log(this.triggered);
-
         let canvas = document.getElementById("canvas");
         let ctx = canvas.getContext("2d");
 

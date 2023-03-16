@@ -19,27 +19,34 @@
         <img class="background wallpaper" src="./assets/brick-texture-35.jpg">
 
         <div class="wrapper">
-          <div class="nav">
-            <div class="nav1">
-              <canvas id="minimap" width="200" height="200"></canvas>
+          <div class="nav nav0">
+            <div class="nav nav1">
+              <canvas id="minimap" class="nav" width="200" height="200"></canvas>
             </div>
 
-            <div class="nav2">
-              <div id="mapButtonDiv">
-                <img id="map" class="hidden" src="./assets/map.png">
+            <div class="nav nav2">
+              <div id="mapButtonDiv" class="nav">
+                <img id="map" class="nav hidden" src="./assets/map.png">
               </div>
-              <div id="compassDiv"><canvas id="compass" width="100" height="100"></canvas></div>
+              <div id="compassDiv" class="nav"><canvas id="compass" class="nav" width="100" height="100"></canvas></div>
             </div>
 
-            <div class="nav3">
-              <p class="text">Use the Arrow keys to find your way out of the labyrinth to freedom!</p>
-              <p class="text">Move forward with the Up Arrow key, turn with the Left and Right Arrow keys.</p>
-              <p class="text">Open your Map by clicking the Map Button or by pressing the "m" key.</p>
+            <div class="nav nav3">
+              <p class="nav text">Use the Arrow keys to find your way out of the labyrinth to freedom!</p>
+              <p class="nav text">Move forward with the Up Arrow key, turn with the Left and Right Arrow keys.</p>
+              <p class="nav text">Open your Map by clicking the Map Button or by pressing the "m" key.</p>
             </div>
           </div>
 
           <div class="game">
-            <canvas id="canvas" width="900" height="700"></canvas>
+            <canvas id="canvas" class="" width="900" height="700"></canvas>
+
+            <div id="endviewDiv" class="hidden">
+              <img src="./assets/endviews/397570.jpg" class="hidden endview">
+              <img src="./assets/endviews/920438-download-spring-meadow-wallpaper-2560x1440-4k.jpg" class="hidden endview">
+              <img src="./assets/endviews/Landscape-wallpapers-5.jpg" class="hidden endview">
+              <img src="./assets/endviews/New_Zealand_landscape-46636.jpg" class="hidden endview">
+            </div>
           </div>
 
           <div class="misc">

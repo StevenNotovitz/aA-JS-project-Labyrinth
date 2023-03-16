@@ -36,12 +36,6 @@ export default class MapView {
         let x4 = centerX - w4 / 2;
         let y4 = centerY - h4 / 2;
 
-        // let grd = ctx.createGradient(0, 0, )
-        // var gradient = context.createLinearGradient(0, 300, 0, 0);
-        // gradient.addColorStop(0, "rgb(102, 76, 64)");
-        // gradient.addColorStop(0.9979838709677421, "rgb(0, 0, 0)");
-        // context.fillStyle = gradient;
-
         // map
         ctx.strokeRect(x3, y3, w3, h3);
         ctx.fillRect(x3, y3, w3, h3);
@@ -53,18 +47,29 @@ export default class MapView {
         if (this.player.traveledFar()) {
             let w5 = h4 / this.maze.jSize;
             let h5 = h4 / this.maze.iSize;
+            let startI = 1;
+            let startJ = 1;
             for (let i = 0; i < this.maze.iSize; i++) {
                 for (let j = 0; j < this.maze.jSize; j++) {
                     let x5 = x4 + j * w5;
                     let y5 = y4 + i * h5;
+
+                    let grd1 = ctx.createRadialGradient(x5 + h5 / 2, y5 + h5 / 2, h5 / 16, x5 + h5 / 2, y5 + h5 / 2, h5 / 5);
+                    grd1.addColorStop(0, "rgba(128, 0, 128, .95");
+                    grd1.addColorStop(1, "rgba(0, 0, 0, .95");
+
+                    let grd2 = ctx.createRadialGradient(x5 + h5 / 2, y5 + h5 / 2, h5 / 16, x5 + h5 / 2, y5 + h5 / 2, h5 / 6);
+                    grd2.addColorStop(0, "rgba(218, 165, 32, .95");
+                    grd2.addColorStop(1, "rgba(0, 0, 0, .95");
+
                     ctx.strokeRect(x5, y5, w5, h5);
                     ctx.fillStyle = "black";
-                    if (this.player.posEquals([i, j])) ctx.fillStyle = "blue";
-                    else if (this.mapState.exposed([i, j])) {
-                        if (this.maze.at([i, j]) === 1) ctx.fillStyle = "#3d3d3d";
-                        else if (this.player.hasVisited([i, j])) ctx.fillStyle = "orange";
-                        else if (this.maze.at([i, j]) === 0) ctx.fillStyle = "black";
-                        else if (this.maze.at([i, j]) === 2) ctx.fillStyle = "white";
+                    if (this.player.posEquals([startI + i, startJ + j]) && !this.maze.at([startI + i, startJ + j])) ctx.fillStyle = grd1;
+                    else if (this.mapState.exposed([startI + i, startJ + j])) {
+                        if (this.maze.at([startI + i, startJ + j]) === 1) ctx.fillStyle = "#3d3d3d";
+                        if (this.maze.at([startI + i, startJ + j]) === 0) ctx.fillStyle = "rgba(0, 0, 0, .95";
+                        if (this.player.hasVisited([startI + i, startJ + j])) ctx.fillStyle = grd2;
+                        if (this.maze.at([startI + i, startJ + j]) === 2) ctx.fillStyle = "white";
                     }
                     ctx.fillRect(x5, y5, w5, h5);
                 }
@@ -74,18 +79,29 @@ export default class MapView {
             let radius = Math.min(mazeSize, 7);
             let w5 = h4 / radius;
             let h5 = h4 / radius;
+            let startI = 1;
+            let startJ = 1;
             for (let i = 0; i < radius; i++) {
                 for (let j = 0; j < radius; j++) {
                     let x5 = x4 + j * w5;
                     let y5 = y4 + i * h5;
+
+                    let grd1 = ctx.createRadialGradient(x5 + h5 / 2, y5 + h5 / 2, h5 / 16, x5 + h5 / 2, y5 + h5 / 2, h5 / 5);
+                    grd1.addColorStop(0, "rgba(128, 0, 128, .95");
+                    grd1.addColorStop(1, "rgba(0, 0, 0, .95");
+
+                    let grd2 = ctx.createRadialGradient(x5 + h5 / 2, y5 + h5 / 2, h5 / 16, x5 + h5 / 2, y5 + h5 / 2, h5 / 6);
+                    grd2.addColorStop(0, "rgba(218, 165, 32, .95");
+                    grd2.addColorStop(1, "rgba(0, 0, 0, .95");
+
                     ctx.strokeRect(x5, y5, w5, h5);
                     ctx.fillStyle = "black";
-                    if (this.player.posEquals([i, j])) ctx.fillStyle = "blue";
-                    else if (this.mapState.exposed([i, j])) {
-                        if (this.maze.at([i, j]) === 1) ctx.fillStyle = "#3d3d3d";
-                        else if (this.player.hasVisited([i, j])) ctx.fillStyle = "orange";
-                        else if (this.maze.at([i, j]) === 0) ctx.fillStyle = "black";
-                        else if (this.maze.at([i, j]) === 2) ctx.fillStyle = "white";
+                    if (this.player.posEquals([startI + i, startJ + j]) && !this.maze.at([startI + i, startJ + j])) ctx.fillStyle = grd1;
+                    else if (this.mapState.exposed([startI + i, startJ + j])) {
+                        if (this.maze.at([startI + i, startJ + j]) === 1) ctx.fillStyle = "#3d3d3d";
+                        if (this.maze.at([startI + i, startI + j]) === 0) ctx.fillStyle = "rgba(0, 0, 0, .95";
+                        if (this.player.hasVisited([startI + i, startJ + j])) ctx.fillStyle = grd2;
+                        if (this.maze.at([startI + i, startI + j]) === 2) ctx.fillStyle = "white";
                     }
                     ctx.fillRect(x5, y5, w5, h5);
                 }

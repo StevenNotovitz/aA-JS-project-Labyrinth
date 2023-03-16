@@ -34,7 +34,7 @@
   align-items: flex-end;
 }
 
-.nav {
+.nav0 {
   height: 100%;
   width: 200px;
   min-width: 200px;
@@ -183,4 +183,77 @@
 
 .startButton:active {
   background-color: goldenrod;
+}
+
+#mapButtonDiv:hover {
+  transition: 0.25s;
+  background: radial-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+}
+
+#mapButtonDiv:active {
+  background-color: goldenrod;
+}
+
+#map {
+  opacity: 80%;
+}
+
+#endviewDiv {
+  width: 750px;
+  height: 600px;
+  background-color: white;
+}
+
+.endview {
+  width: 100%;
+  height: 100%;
+}
+
+.fade-in-image {
+  animation: fadeIn 1s;
+  -webkit-animation: fadeIn 5s;
+  -moz-animation: fadeIn 5s;
+  -o-animation: fadeIn 5s;
+  -ms-animation: fadeIn 5s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-moz-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-o-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-ms-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
