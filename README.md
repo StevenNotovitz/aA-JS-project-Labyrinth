@@ -47,6 +47,7 @@ The map screen starts out unexplored, and is revealed gradually, as the player w
 
 This project is to be implemented with the following technologies:\
 -The [Canvas API](https://canvas.instructure.com/doc/api/) to render the first-person view of the labyrinth\
+-[Webpack](https://webpack.js.org/concepts/) and [Babel](https://babeljs.io/docs/) to bundle and transpile the source Javascript code\
 -[npm](https://docs.npmjs.com/) to manage project dependencies
 
 ## Implementation Timeline
