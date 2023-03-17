@@ -1,11 +1,5 @@
-edit google sheets criteria retroactively
-
-production readme
-
 
 fix mapButtonDiv having hover and active styles before game starts
-
-fully implement end music logic
 
 fix map not working during endstate
 
