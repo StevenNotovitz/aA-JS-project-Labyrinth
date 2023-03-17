@@ -72,7 +72,7 @@ There are many directions this dungeon escape game could eventually go. Some ant
 -allow the map to be opened even after the end view has been rendered\
 -refactor the code to be more sensible\
 
-## CC Licensing
+## Sources
 
 -Favicon is a cropped image of a Greek silver coin from 400BC depicting the Labyrinth of Knossos.\
 -Github and LinkedIn icons were provided by Font Awesome and only had colors changed.\
