@@ -73,7 +73,7 @@ There are many directions this dungeon escape game could eventually go. Some ant
 
 ## Sources
 
--Favicon is a cropped image of a Greek silver coin from 400BC depicting the Labyrinth of Knossos.\
+-Favicon is a cropped image of a Greek silver coin from 400 BC depicting the Labyrinth of Knossos.\
 -Github and LinkedIn icons were provided by Font Awesome and only had colors changed.\
 -Vecna Font by Pixel Sagas, from fontspace.com\
 -Map 2d art from 0pengameart.org by yd\
