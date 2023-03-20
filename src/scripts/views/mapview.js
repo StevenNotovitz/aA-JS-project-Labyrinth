@@ -45,12 +45,12 @@ export default class MapView {
 
         // tiles
         if (this.player.traveledFar()) {
-            let w5 = h4 / this.maze.jSize;
-            let h5 = h4 / this.maze.iSize;
+            let w5 = h4 / (this.maze.jSize - 2);
+            let h5 = h4 / (this.maze.iSize - 2);
             let startI = 1;
             let startJ = 1;
-            for (let i = 0; i < this.maze.iSize; i++) {
-                for (let j = 0; j < this.maze.jSize; j++) {
+            for (let i = 0; i < this.maze.iSize - 2; i++) {
+                for (let j = 0; j < this.maze.jSize - 2; j++) {
                     let x5 = x4 + j * w5;
                     let y5 = y4 + i * h5;
 
