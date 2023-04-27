@@ -1,4 +1,5 @@
 <!-- ### JS Project Proposal: First-Person Labyrinth Game -->
+
 # Labyrinth
 
 ## Background

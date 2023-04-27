@@ -1,51 +1,45 @@
-<!DOCTYPE html>
+<!doctype html>
 
 <html lang="en">
-
   <head>
     <title>Labyrinth</title>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
       integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
-      crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link rel="stylesheet" href="./dist/main.css"/>
     <script src="./dist/main.js" defer></script>
   </head>
-
   <body>
     <div id="backgroundDiv">
       <img class="background undertone" src="./assets/f9dba043ca970a450181d01899cf7f39.jpg">
-
       <div id="wallpaperDiv">
         <img class="background wallpaper" src="./assets/brick-texture-35.jpg">
-
         <div class="wrapper">
           <div class="nav nav0">
             <div class="nav nav1">
               <canvas id="minimap" class="nav" width="200" height="200"></canvas>
             </div>
-
             <div class="nav nav2">
               <div id="mapButtonDiv" class="nav">
                 <img id="map" class="nav hidden" src="./assets/map.png">
               </div>
               <div id="compassDiv" class="nav"><canvas id="compass" class="nav" width="100" height="100"></canvas></div>
             </div>
-
             <div class="nav nav3">
               <p class="nav text">Use the Arrow keys to find your way out of the labyrinth to freedom!</p>
               <p class="nav text">Move forward with the Up Arrow key, turn with the Left and Right Arrow keys.</p>
               <p class="nav text">Open your Map by clicking the Map Button or by pressing the "m" key.</p>
             </div>
           </div>
-
           <div class="game">
             <canvas id="canvas" class="" width="900" height="700"></canvas>
-
             <div id="endviewDiv" class="hidden">
               <img src="./assets/endviews/397570.jpg" class="hidden endview">
               <img src="./assets/endviews/920438-download-spring-meadow-wallpaper-2560x1440-4k.jpg" class="hidden endview">
@@ -53,7 +47,6 @@
               <img src="./assets/endviews/New_Zealand_landscape-46636.jpg" class="hidden endview">
             </div>
           </div>
-
           <div class="misc">
             <div class="header">
               <div id="logoDiv"><a href="https://ashmolean.org/exhibition/labyrinth-knossos-myth-reality" id="logo"><img class="logo" src="./assets/Knossos_silver_coin_400bc-modified.png"></a></div>
@@ -63,16 +56,13 @@
                 <a href="https://github.com/StevenNotovitz/aA-JS-project"><i class="fa-brands fa-square-github icon"></i></a>
               </div>
             </div>
-
             <div class="levelSelect">
+              <!-- <button id="startGame-0" class="startButton"><p class="text">Level 0</p></button> -->
               <button id="startGame-1" class="startButton start"><p class="text">Level 1</p></button>
               <button id="startGame-2" class="startButton start"><p class="text">Level 2</p></button>
               <button id="startGame-3" class="startButton start"><p class="text">Level 3</p></button>
               <button id="resetGame" class="startButton"><p class="text">Reset</p></button>
             </div>
-
-            <!-- <button id="startGame-0" class="startButton"><p class="text">Level 0</p></button> -->
-
             <div class="audio">
               <button id="playbtn" class="button audiobutton"><p class="text">Play Music</p></button>
               <button id="mutebtn" class="button audiobutton hidden"><p class="text">Mute Music</p></button>
@@ -80,24 +70,10 @@
               <button id="mutebtn2" class="button audiobutton hidden"><p class="text">Mute Music</p></button>
               <button id="playbtn3" class="button audiobutton hidden"><p class="text">Play Music</p></button>
               <button id="mutebtn3" class="button audiobutton hidden"><p class="text">Mute Music</p></button>
-              
               <audio id="audio" src="./assets/audio/1 - Robyn Miller - Myst Theme.mp3" loop="true"></audio>
               <audio id="gameaudio" src="./assets/audio/Volume-Beta-03.-Dead-Voxel.mp3" loop="true"></audio>
               <audio id="endaudio" src="./assets/audio/Claude-Debussy-Maid-with-the-Flaxen-Hair.mp3"></audio>
-
               <script defer>
-                // let audio = new Audio();
-                // audio.id = "audio";
-                // audio.src = "./assets/audio/1 - Robyn Miller - Myst Theme.mp3";
-                // audio.loop = true;
-                // let gameaudio = new Audio();
-                // gameaudio.id = "gameaudio";
-                // gameaudio.src = "./assets/audio/Volume-Beta-03.-Dead-Voxel.mp3";
-                // gameaudio.loop = true;
-                // let endaudio = new Audio();
-                // endaudio.id = "endaudio";
-                // endaudio.src = "./assets/audio/Claude-Debussy-Maid-with-the-Flaxen-Hair.mp3";
-                // set object references
                 let audio = document.getElementById("audio");
                 let gameaudio = document.getElementById("gameaudio");
                 let endaudio = document.getElementById("endaudio");
@@ -107,7 +83,7 @@
                 let mutebtn2 = document.getElementById("mutebtn2");
                 let playbtn3 = document.getElementById("playbtn3");
                 let mutebtn3 = document.getElementById("mutebtn3");
-                // add event handling
+
                 playbtn.addEventListener("click", () => {
                   audio.play();
                   playbtn.classList.add("hidden");
@@ -160,7 +136,7 @@
                   audio.play();
                   gameaudio.pause();
                   endaudio.pause();
-                  playbtn.classList.add("hidden")
+                  playbtn.classList.add("hidden");
                   mutebtn.classList.remove("hidden");
                   playbtn2.classList.add("hidden");
                   mutebtn2.classList.add("hidden");
@@ -174,7 +150,7 @@
                     gameaudio.pause();
                     endaudio.currentTime = 0;
                     endaudio.play();
-                    playbtn.classList.add("hidden")
+                    playbtn.classList.add("hidden");
                     mutebtn.classList.add("hidden");
                     playbtn2.classList.add("hidden");
                     mutebtn2.classList.add("hidden");
@@ -189,5 +165,4 @@
       </div>
     </div>
   </body>
-
 </html>
